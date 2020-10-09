@@ -2,6 +2,7 @@ package com.jie.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -40,5 +41,10 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
 
+    }
+    //自定义国际化
+    @Bean
+    public LocaleResolver localeResolver(){
+        return new MyLocalResolver();
     }
 }
